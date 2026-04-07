@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ItsDarexMC | Development Hub</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      background: linear-gradient(to bottom, #000000 0%, #0a0a0a 40%, #141414 100%);
+      background-attachment: fixed;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      padding: 35px;
+      border-radius: 30px;
+      /* Cristal oscuro traslúcido */
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      /* Borde muy fino para separar la tarjeta del fondo negro */
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .title {
+      font-size: 28px;
+      margin-bottom: 25px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 16px;
+      border-radius: 16px;
+      border: none;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.1);
+    }
+
+    /* Estilo Amethyst (Morado profundo) */
+    .amethyst {
+      background: #5a0096;
+      box-shadow: 0 4px 15px rgba(90, 0, 150, 0.2);
+    }
+
+    .amethyst:hover {
+      box-shadow: 0 0 20px rgba(90, 0, 150, 0.5);
+    }
+
+    /* Estilo Helium (Naranja quemado) */
+    .helium {
+      background: linear-gradient(45deg, #ff7300, #e65100);
+      box-shadow: 0 4px 15px rgba(255, 115, 0, 0.2);
+    }
+
+    .helium:hover {
+      box-shadow: 0 0 20px rgba(255, 115, 0, 0.5);
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 12px;
+      opacity: 0.3;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="title">Selecciona un proyecto</div>
+
+  <div class="buttons">
+    <a href="amethyst.html" class="btn amethyst">Amethyst Development</a>
+    <a href="helium.html" class="btn helium">Helium Development</a>
+  </div>
+
+  <div class="footer">© 2026 ItsDarexMC. All rights reserved.</div>
+</div>
+
+</body>
+</html>
