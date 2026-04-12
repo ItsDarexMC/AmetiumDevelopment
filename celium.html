@@ -150,8 +150,8 @@ a:visited, a:active {
     box-sizing: border-box;
 }
 
-.download { background: #9b111e; }
-.download:hover { box-shadow: 0 0 12px #9b111e; transform: translateY(-2px); }
+.download { background: #CC0000; }
+.download:hover { box-shadow: 0 0 12px #CC0000; transform: translateY(-2px); }
 
 .buy { background: linear-gradient(45deg, #ffb300, #ff7300); }
 .buy:hover { box-shadow: 0 0 12px #ff9800; transform: translateY(-2px); }
@@ -182,7 +182,7 @@ a:visited, a:active {
 
 .icons img {
     width: 20px;
-    filter: brightness(0) invert(1) drop-shadow(0 0 6px #9b111e);
+    filter: brightness(0) invert(1) drop-shadow(0 0 6px #CC0000);
 }
 
 .icons a:hover {
@@ -281,7 +281,7 @@ if(p1.y<0||p1.y>h)p1.vy*=-1;
 
 ctx.beginPath();
 ctx.arc(p1.x,p1.y,2,0,Math.PI*2);
-ctx.fillStyle="#9b111e"; 
+ctx.fillStyle="#CC0000"; 
 ctx.fill();
 
 for(let j=i+1;j<particles.length;j++){
@@ -294,7 +294,7 @@ if(dist<150){
 ctx.beginPath();
 ctx.moveTo(p1.x,p1.y);
 ctx.lineTo(p2.x,p2.y);
-ctx.strokeStyle="#9b111e"; 
+ctx.strokeStyle="#CC0000"; 
 ctx.globalAlpha=1-(dist/150);
 ctx.stroke();
 ctx.globalAlpha=1;
