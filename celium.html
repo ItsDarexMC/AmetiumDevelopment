@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-/* --- ESTILOS GENERALES (SIN CAMBIOS) --- */
 html, body {
     height: 100%;
     margin: 0;
@@ -36,7 +35,6 @@ a:visited, a:active {
     color: inherit;
 }
 
-/* --- ESTILOS DEL CANVAS (CON CAMBIOS) --- */
 #particles-canvas {
     position: absolute;
     top: 0;
@@ -46,7 +44,6 @@ a:visited, a:active {
     z-index: 0;
 }
 
-/* --- TARJETA PRINCIPAL (SIN CAMBIOS) --- */
 .card {
     width: 100%;
     max-width: 520px;
@@ -62,7 +59,6 @@ a:visited, a:active {
     box-sizing: border-box;
     position: relative;
     z-index: 1;
-
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 0.7s ease forwards;
@@ -75,13 +71,11 @@ a:visited, a:active {
     }
 }
 
-/* --- TÍTULO (CON CAMBIOS DE SOMBRA ROJA) --- */
 .title {
     font-size: 36px;
     font-weight: 700;
     text-align: center;
-    /* Sombras cambiadas de blanco/naranja a blanco/rojo */
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 59, 59, 0.5); 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
     margin-bottom: 10px;
 }
 
@@ -98,7 +92,6 @@ a:visited, a:active {
     margin: 0 auto;
 }
 
-/* --- AUTORES (SIN CAMBIOS, YA ERA ROJO) --- */
 .authors {
     display: block;
     font-size: 12px;
@@ -110,7 +103,6 @@ a:visited, a:active {
     line-height: 1.6;
 }
 
-/* --- BARRA DE DISCORD (SIN CAMBIOS) --- */
 .discord-stats-bar {
     display: flex;
     justify-content: center;
@@ -140,7 +132,6 @@ a:visited, a:active {
     box-shadow: 0 0 5px #43b581;
 }
 
-/* --- BOTONES (CON CAMBIOS DE COLOR) --- */
 .buttons { display: flex; flex-direction: column; gap: 12px; width: 100%; }
 
 .btn {
@@ -159,19 +150,15 @@ a:visited, a:active {
     box-sizing: border-box;
 }
 
-/* Cambiado de #ff7300 (naranja) a #ff3b3b (rojo) */
-.download { background: #ff3b3b; }
-.download:hover { box-shadow: 0 0 12px #ff3b3b; transform: translateY(-2px); }
+.download { background: #8B0000; }
+.download:hover { box-shadow: 0 0 12px #8B0000; transform: translateY(-2px); }
 
-/* Cambiado de degradado amarillo/naranja a degradado rojo oscuro/rojo brillante */
-.buy { background: linear-gradient(45deg, #b31a1a, #ff3b3b); }
-.buy:hover { box-shadow: 0 0 12px #ff3b3b; transform: translateY(-2px); }
+.buy { background: linear-gradient(45deg, #440000, #8B0000); }
+.buy:hover { box-shadow: 0 0 12px #8B0000; transform: translateY(-2px); }
 
-/* Discord se mantiene azul */
 .discord { background: #5865F2; }
 .discord:hover { box-shadow: 0 0 12px #5865F2; transform: translateY(-2px); }
 
-/* --- ICONOS DE REDES SOCIALES (CON CAMBIOS DE SOMBRA) --- */
 .icons {
     display: flex;
     justify-content: center;
@@ -195,8 +182,7 @@ a:visited, a:active {
 
 .icons img {
     width: 20px;
-    /* Sombra cambiada de blanco a rojo para un efecto neón */
-    filter: brightness(0) invert(1) drop-shadow(0 0 6px #ff3b3b);
+    filter: brightness(0) invert(1) drop-shadow(0 0 6px #8B0000);
 }
 
 .icons a:hover {
@@ -204,7 +190,6 @@ a:visited, a:active {
     background: rgba(255,255,255,0.1);
 }
 
-/* --- FOOTER (SIN CAMBIOS) --- */
 .footer {
     margin-top: 30px;
     font-size: 12px;
@@ -228,7 +213,7 @@ a:visited, a:active {
 <div class="subtitle">Addon para Meteor Client 1.21.11 enfocado en anarquía y exploits. 100% código abierto.</div>
 <div class="authors">
 By ItsDarexMC<br>
-<span style="color:#ff3b3b;">Aún no hay ninguna versión oficial disponible.</span>
+<span style="color:#8B0000;">Aún no hay ninguna versión oficial disponible.</span>
 </div>
 </div>
 
@@ -246,7 +231,7 @@ By ItsDarexMC<br>
 <div class="buttons">
 <a href="https://discord.gg/BMWbAHC28p" target="_blank"><button class="btn discord">Unirse al Discord Oficial</button></a>
 <a href="https://work.ink/2m5S/CeliumAddon" target="_blank"><button class="btn download">Descargar Addon</button></a>
-<a href="celiumclient/"><button class="btn buy">Adquirir Cliente (<span style="color:#ff3b3b;">12 €</span>)</button></a>
+<a href="celiumclient/"><button class="btn buy">Adquirir Cliente (<span style="color:#FFBABA;">12 €</span>)</button></a>
 </div>
 
 <div class="icons">
@@ -260,7 +245,6 @@ By ItsDarexMC<br>
 <div class="footer">© 2026 Cerium Development. All rights reserved.</div>
 
 <script>
-/* --- SCRIPT DE PARTÍCULAS (CON CAMBIOS DE COLOR) --- */
 (function() {
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
@@ -297,8 +281,7 @@ if(p1.y<0||p1.y>h)p1.vy*=-1;
 
 ctx.beginPath();
 ctx.arc(p1.x,p1.y,2,0,Math.PI*2);
-/* Cambiado de #ff7300 (naranja) a #ff3b3b (rojo) para los puntos */
-ctx.fillStyle="#ff3b3b"; 
+ctx.fillStyle="#8B0000"; 
 ctx.fill();
 
 for(let j=i+1;j<particles.length;j++){
@@ -311,8 +294,7 @@ if(dist<150){
 ctx.beginPath();
 ctx.moveTo(p1.x,p1.y);
 ctx.lineTo(p2.x,p2.y);
-/* Cambiado de #ff7300 (naranja) a #ff3b3b (rojo) para las líneas */
-ctx.strokeStyle="#ff3b3b"; 
+ctx.strokeStyle="#8B0000"; 
 ctx.globalAlpha=1-(dist/150);
 ctx.stroke();
 ctx.globalAlpha=1;
@@ -327,7 +309,6 @@ resizeCanvas();
 draw();
 })();
 
-/* --- SCRIPT DE DISCORD (SIN CAMBIOS) --- */
 (function() {
 const inviteCode = 'BMWbAHC28p';
 
