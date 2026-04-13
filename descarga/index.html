@@ -1,4 +1,43 @@
-opacity: 0;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amethyst Development</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow-x: hidden;
+      background: #000000;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    #particles-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .box {
+      opacity: 0;
       transform: translateY(20px);
       animation: fadeIn 0.7s ease forwards;
       width: 100%;
@@ -114,6 +153,41 @@ opacity: 0;
       letter-spacing: 0.5px;
       text-align: center;
     }
+
+    @media (max-width: 600px) {
+      body {
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 15px;
+      }
+
+      .box {
+        padding: 20px;
+        border-radius: 20px;
+        margin-top: 30px;
+      }
+
+      .title {
+        font-size: 22px;
+      }
+
+      .subtitle {
+        font-size: 12px;
+      }
+
+      .tutorial-title {
+        font-size: 14px;
+      }
+
+      .tutorial-list li {
+        font-size: 12px;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 14px;
+      }
+    }
   </style>
 </head>
 
@@ -155,42 +229,80 @@ opacity: 0;
 </div>
 
 <script>
-  (function() {
-    const canvas = document.getElementById('particles-canvas');
-    const ctx = canvas.getContext('2d');
-    let w, h, particles;
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, particles;
 
-    function getParticleCount() {
-      return Math.floor((window.innerWidth * window.innerHeight) / 7000);
+  function getParticleCount() {
+    return Math.floor((window.innerWidth * window.innerHeight) / 7000);
+  }
+
+  const config = { color: '#5a0096', connectDist: 150, maxVelocity: 0.2 };
+
+  function resizeCanvas() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    initParticles();
+  }
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < getParticleCount(); i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * config.maxVelocity,
+        vy: (Math.random() - 0.5) * config.maxVelocity,
+        radius: 2
+      });
     }
+  }
 
-    const config = { color: '#5a0096', connectDist: 150, maxVelocity: 0.2 };
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
 
-    function resizeCanvas() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-      initParticles();
-    }
+    for (let i = 0; i < particles.length; i++) {
+      let p1 = particles[i];
 
-    function initParticles() {
-      particles = [];
-      for (let i = 0; i < getParticleCount(); i++) {
-        particles.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * config.maxVelocity,
-          vy: (Math.random() - 0.5) * config.maxVelocity,
-          radius: 2
-        });
+      p1.x += p1.vx;
+      p1.y += p1.vy;
+
+      if (p1.x < 0 || p1.x > w) p1.vx *= -1;
+      if (p1.y < 0 || p1.y > h) p1.vy *= -1;
+
+      ctx.fillStyle = config.color;
+      ctx.beginPath();
+      ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        let p2 = particles[j];
+        let dx = p1.x - p2.x;
+        let dy = p1.y - p2.y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < config.connectDist) {
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = config.color;
+          ctx.lineWidth = 0.6;
+          ctx.globalAlpha = 1 - (dist / config.connectDist);
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
       }
     }
 
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
-      for (let i = 0; i < particles.length; i++) {
-        let p1 = particles[i];
-        p1.x += p1.vx;
-        p1.y += p1.vy;
+    requestAnimationFrame(draw);
+  }
 
-        if (p1.x < 0 || p1.x > w) p1.vx *= -1;
-        if (p1.y < 0 || p1.y > h) p1.vy *= -1;
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+  draw();
+})();
+</script>
+
+</body>
+</html>
